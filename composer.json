@@ -1,0 +1,39 @@
+{
+    "name": "vitegroupltd/vitelicense-laravel-integrate",
+    "description": "Laravel package for vitelicense.io",
+    "type": "library",
+    "license": "MIT",
+    "version": "1.0.0",
+    "autoload": {
+        "psr-4": {
+            "ViteGroup\\ViteLicense\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Vite., Ltd",
+            "email": "admin@vitelicense.io",
+            "homepage": "https://github.com/vitegroupltd"
+        }
+    ],
+    "homepage": "https://github.com/vitegroupltd/vitelicense-laravel-integrate",
+    "keywords": ["Laravel", "package", "payment", "vitelicense", "9pay"],
+    "require": {
+        "php": "^8.1",
+        "guzzlehttp/guzzle": "^7.8"
+    },
+    "require-dev": {
+        "illuminate/support": "^8.0",
+        "illuminate/http": "^8.83",
+        "illuminate/routing": "^8.83"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "ViteGroup\\ViteLicense\\ViteLicenseServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}

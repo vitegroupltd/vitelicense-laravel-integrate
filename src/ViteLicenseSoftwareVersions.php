@@ -4,9 +4,8 @@ namespace ViteGroup\ViteLicense;
 
 use GuzzleHttp\Exception\GuzzleException;
 
-class ViteLicenseSoftware
+class ViteLicenseSoftwareVersions
 {
-    private string $api_key;
     private ViteLicenseSDK $sdk;
 
     public function __construct(string $api_key='')
@@ -17,48 +16,48 @@ class ViteLicenseSoftware
     /**
      * @throws GuzzleException
      */
-    public function list(): array
+    public function list(int $software_id): array
     {
-        return $this->sdk->post($this->sdk->url['software']['list']);
+        $param = [
+            'software_id' => $software_id
+        ];
+        return $this->sdk->post($this->sdk->url['software_versions']['list'], $param);
     }
 
     /**
      * @throws GuzzleException
      */
-    public function create(string $name, string $sku, string $description='', int $status=1): array
+    public function create(int $software_id, string $code): array
     {
         $param = [
-            'name' => $name,
-            'sku' => $sku,
-            'description' => $description,
-            'status' => $status
+            'software_id' => $software_id,
+            'code' => $code
         ];
-        return $this->sdk->post($this->sdk->url['software']['create'], $param);
+        return $this->sdk->post($this->sdk->url['software_versions']['create'], $param);
     }
 
     /**
      * @throws GuzzleException
      */
-    public function update(int $id, string $name, string $sku, string $description='', int $status=1): array
+    public function update(int $software_id, string $code, string $new_code): array
     {
         $param = [
-            'id' => $id,
-            'name' => $name,
-            'sku' => $sku,
-            'description' => $description,
-            'status' => $status
+            'software_id' => $software_id,
+            'code' => $code,
+            'new_code' => $new_code
         ];
-        return $this->sdk->post($this->sdk->url['software']['update'], $param);
+        return $this->sdk->post($this->sdk->url['software_versions']['update'], $param);
     }
 
     /**
      * @throws GuzzleException
      */
-    public function delete(int $id): array
+    public function delete(int $software_id, string $code): array
     {
         $param = [
-            'id' => $id
+            'software_id' => $software_id,
+            'code' => $code
         ];
-        return $this->sdk->post($this->sdk->url['software']['update'], $param);
+        return $this->sdk->post($this->sdk->url['software_versions']['update'], $param);
     }
 }
