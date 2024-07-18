@@ -25,16 +25,16 @@ class ViteLicenseSdk
                 'delete' => '/software/delete'
             ],
             'software_versions' => [
-                'list' => '/versions/list',
-                'create' => '/versions/create',
-                'update' => '/versions/update',
-                'delete' => '/versions/delete'
+                'list' => '/software/versions/list',
+                'create' => '/software/versions/create',
+                'update' => '/software/versions/update',
+                'delete' => '/software/versions/delete'
             ],
             'software_changelogs' => [
-                'list' => '/version/list',
-                'create' => '/version/create',
-                'update' => '/version/update',
-                'delete' => '/version/delete'
+                'list' => '/software/changelogs/list',
+                'create' => '/software/changelogs/create',
+                'update' => '/software/changelogs/update',
+                'delete' => '/software/changelogs/delete'
             ],
             'licenses' => [
                 'list' => '/licenses/list',
@@ -74,7 +74,7 @@ class ViteLicenseSdk
             if (!is_array($tmp)) {
                 $tmp = json_decode($tmp, true);
             }
-            return $tmp;
+            return $tmp ?? ['status' => false, 'message' => 'The post param has some wrong type of values'];
         } catch (\Exception) {
             return ['status' => false, 'message' => 'The post param has some wrong type of values'];
         }
@@ -94,6 +94,10 @@ class ViteLicenseSdk
         $res = $this->client->request('POST', $url, [
             'json' => $param
         ]);
-        return $this->parse($res->getBody()->getContents());
+        if ($res->getStatusCode() == 200) {
+            return $this->parse($res->getBody()->getContents());
+        } else {
+            return ['status' => false, 'message' => 'HTTP error '. $res->getStatusCode()];
+        }
     }
 }
