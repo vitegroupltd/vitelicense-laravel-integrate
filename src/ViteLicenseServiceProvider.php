@@ -2,7 +2,6 @@
 
 namespace ViteGroup\ViteLicense;
 
-use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\ServiceProvider;
 
