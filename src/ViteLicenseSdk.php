@@ -4,6 +4,7 @@ namespace ViteGroup\ViteLicense;
 
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Client;
+use Illuminate\Support\Facades\Config;
 
 class ViteLicenseSdk
 {
@@ -14,7 +15,7 @@ class ViteLicenseSdk
 
     public function __construct(string $api_key='')
     {
-        $this->api_key = $api_key ?? config('vitelicense.'. 'api_key');
+        $this->api_key = empty($api_key) ? Config::get('vitelicense.api_key') : $api_key;
         $this->server = 'https://vitelicense.io/api';
         $this->url = [
             'software' => [
@@ -65,14 +66,18 @@ class ViteLicenseSdk
 
     public function parse($data): array
     {
-        if (! $data) {
-            return [];
+        try {
+            if (!$data) {
+                return [];
+            }
+            $tmp = json_decode(json_encode($data, true), true);
+            if (!is_array($tmp)) {
+                $tmp = json_decode($tmp, true);
+            }
+            return $tmp;
+        } catch (\Exception) {
+            return ['status' => false, 'message' => 'The post param has some wrong type of values'];
         }
-        $tmp = json_decode(json_encode($data, true), true);
-        if (! is_array($tmp)) {
-            $tmp = json_decode($tmp, true);
-        }
-        return $tmp;
     }
 
     /**
@@ -87,10 +92,7 @@ class ViteLicenseSdk
         }
         $param['api_key'] = $this->api_key;
         $res = $this->client->request('POST', $url, [
-            'timeout' => 120,
-            'http_errors' => false,
-            'headers' => ['User-Agent' => 'ViteLicense (+https://vitelicense.io)', 'X-Api-Key' => $this->api_key],
-            'body' => json_encode($param)
+            'json' => $param
         ]);
         return $this->parse($res->getBody()->getContents());
     }

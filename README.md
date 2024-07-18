@@ -11,7 +11,7 @@ The free Laravel package to help you integrate with vitelicense.io
 ## Features
 
 - Dynamic vitelicense.io credentials from config/vitelicense.php
-- Easy to create payment link with a simple line code
+- Easy to manage your software licenses with a few lines of coding
 
 ## Requirements
 
@@ -44,34 +44,7 @@ If publishing files fails, please create corresponding files at the path `config
 
 #### Step 4. Update the various config settings in the published config file:
 
-After publishing the package assets a configuration file will be located at <code>config/vitelicense.php</code>. Please contact vitelicense.io to get those values to fill into the config file.
-
-#### Step 5. Add middleware protection:
-
-###### app/Http/Kernel.php
-
-```php
-<?php
-
-namespace App\Http;
-
-use Illuminate\Foundation\Http\Kernel as HttpKernel;
-
-class Kernel extends HttpKernel
-{
-    // Other kernel properties...
-    
-    /**
-     * The application's route middleware groups.
-     *
-     * @var array
-     */
-    protected $routeMiddleware = [
-        // Other middlewares...
-         'vitelicense' => 'ViteGroup\ViteLicense\Http\Middleware\ViteLicenseMiddleware',
-    ];
-}
-```
+After publishing the package assets a configuration file will be located at <code>config/vitelicense.php</code>. Please find in vitelicense.io to get those values to fill into the config file.
 
 <!--- ## Usage --->
 

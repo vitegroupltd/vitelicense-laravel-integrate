@@ -16,7 +16,6 @@ class ViteLicenseServiceProvider extends ServiceProvider
     {
         $this->publishes([
             __DIR__.'/../config/vitelicense.php' => config_path('vitelicense.php'),
-            __DIR__ . '/../app/Http/Middleware/ViteLicenseMiddleware.php' => app_path('Http/Middleware/ViteLicenseMiddleware.php'),
         ], 'vitelicense');
 
         try {
@@ -27,7 +26,7 @@ class ViteLicenseServiceProvider extends ServiceProvider
 
                 Artisan::call('vendor:publish', ['--provider' => 'ViteGroup\\ViteLicense\\ViteLicenseServiceProvider', '--tag' => ['vitelicense']]);
             }
-        } catch (\Exception $e) {}
+        } catch (\Exception) {}
     }
 
     /**
