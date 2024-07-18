@@ -40,6 +40,7 @@ class ViteLicenseSdk
                 'list' => '/licenses/list',
                 'create' => '/licenses/create',
                 'generate' => '/licenses/generate',
+                'activate' => '/licenses/activate',
                 'unlock' => '/licenses/unlock',
                 'block' => '/licenses/block',
                 'extend_expiry' => '/extend/expiry',
