@@ -3,7 +3,7 @@
     "description": "Laravel package for vitelicense.io",
     "type": "library",
     "license": "MIT",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "autoload": {
         "psr-4": {
             "ViteGroup\\ViteLicense\\": "src/"
@@ -17,7 +17,7 @@
         }
     ],
     "homepage": "https://github.com/vitegroupltd/vitelicense-laravel-integrate",
-    "keywords": ["Laravel", "package", "payment", "vitelicense", "9pay"],
+    "keywords": ["Laravel", "package", "payment", "vitelicense", "keygen", "keygen.sh", "license management"],
     "require": {
         "php": "^8.1",
         "guzzlehttp/guzzle": "^7.8"

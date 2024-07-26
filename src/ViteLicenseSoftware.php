@@ -58,6 +58,6 @@ class ViteLicenseSoftware
         $param = [
             'id' => $id
         ];
-        return $this->sdk->post($this->sdk->url['software']['update'], $param);
+        return $this->sdk->post($this->sdk->url['software']['delete'], $param);
     }
 }

@@ -48,40 +48,9 @@ After publishing the package assets a configuration file will be located at <cod
 
 <!--- ## Usage --->
 
-## Testing
+## RESTful API Documentation
 
-``` php
-<?php
-
-namespace App\Console\Commands;
-
-use ViteGroup\ViteLicense\ViteLicenseSdk;
-use Illuminate\Console\Command;
-
-class ViteLicenseTestCommand extends Command
-{
-    protected $signature = 'vitelicense:test';
-
-    protected $description = 'Test ViteLicense SDK';
-
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
-    public function handle()
-    {
-        $instance = new ViteLicenseSdk();
-        echo $instance->create_payment(
-            'INV-test-01',
-            10000,
-            'Description-test-01',
-            'http://localhost:8000/return',
-            'http://localhost:8000/back'
-        );
-    }
-}
-```
+Please see [POSTMAN DOCUMENTATION](https://documentation.vitelicense.io) for details.
 
 ## Contributing
 
