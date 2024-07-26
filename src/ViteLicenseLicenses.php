@@ -24,6 +24,17 @@ class ViteLicenseLicenses
     /**
      * @throws GuzzleException
      */
+    public function details(string $serial): array
+    {
+        $param = [
+            'serial' => $serial
+        ];
+        return $this->sdk->post($this->sdk->url['licenses']['details'], $param);
+    }
+
+    /**
+     * @throws GuzzleException
+     */
     public function create(int $software_id, string $serial='', int $slot=1, int $duration_days=30, string $expired_at=''): array
     {
         $param = [
@@ -104,6 +115,17 @@ class ViteLicenseLicenses
             'slot' => $slot
         ];
         return $this->sdk->post($this->sdk->url['licenses']['extend_slot'], $param);
+    }
+
+    /**
+     * @throws GuzzleException
+     */
+    public function devices(string $serial): array
+    {
+        $param = [
+            'serial' => $serial
+        ];
+        return $this->sdk->post($this->sdk->url['licenses']['devices'], $param);
     }
 
     /**

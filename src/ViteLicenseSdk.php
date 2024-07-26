@@ -38,6 +38,7 @@ class ViteLicenseSdk
             ],
             'licenses' => [
                 'list' => '/licenses/list',
+                'details' => '/licenses/details',
                 'create' => '/licenses/create',
                 'generate' => '/licenses/generate',
                 'activate' => '/licenses/activate',
@@ -45,6 +46,7 @@ class ViteLicenseSdk
                 'block' => '/licenses/block',
                 'extend_expiry' => '/extend/expiry',
                 'extend_slot' => '/extend/slot',
+                'devices' => '/licenses/devices',
                 'attach' => '/licenses/attach',
                 'detach' => '/licenses/detach',
                 'verify' => '/licenses/verify',
@@ -52,6 +54,7 @@ class ViteLicenseSdk
             ],
             'devices' => [
                 'list' => '/devices/list',
+                'details' => '/devices/details',
                 'create' => '/devices/create',
                 'unlock' => '/devices/unlock',
                 'block' => '/devices/block',

@@ -24,6 +24,17 @@ class ViteLicenseDevices
     /**
      * @throws GuzzleException
      */
+    public function details(string $hash): array
+    {
+        $param = [
+            'hash' => $hash
+        ];
+        return $this->sdk->post($this->sdk->url['devices']['details'], $param);
+    }
+
+    /**
+     * @throws GuzzleException
+     */
     public function create(string $hash, string $name, string $ip_address='', string $description=''): array
     {
         $param = [
