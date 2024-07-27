@@ -6,11 +6,11 @@ use GuzzleHttp\Exception\GuzzleException;
 
 class ViteLicenseSoftware
 {
-    private ViteLicenseSDK $sdk;
+    private ViteLicenseSdk $sdk;
 
     public function __construct(string $api_key='')
     {
-        $this->sdk = new ViteLicenseSDK($api_key);
+        $this->sdk = new ViteLicenseSdk($api_key);
     }
 
     /**
