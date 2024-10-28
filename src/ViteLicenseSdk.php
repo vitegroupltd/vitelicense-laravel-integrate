@@ -64,7 +64,10 @@ class ViteLicenseSdk
 
         $this->client = new Client([
             'headers' => ['User-Agent' => 'ViteLicense (+https://vitelicense.io)', 'X-Api-Key' => $this->api_key],
-            'http_errors' => false
+            'http_errors' => true,
+            'defaults' => [
+                'verify' => false
+            ]
         ]);
     }
 
@@ -96,7 +99,8 @@ class ViteLicenseSdk
         }
         $param['api_key'] = $this->api_key;
         $res = $this->client->request('POST', $url, [
-            'json' => $param
+            'json' => $param,
+            'verify' => false
         ]);
         if ($res->getStatusCode() == 200) {
             return $this->parse($res->getBody()->getContents());
